@@ -34,6 +34,7 @@ def linear_regression(df):
         pred_dfs.append(pred_df) 
     combined_df = pd.concat(pred_dfs, axis=1) 
     st.write(combined_df) 
+    plt.title('Forecasting Test Scores')
     plt.xlabel('Test ID') 
     plt.ylabel('Test Score') 
     plt.legend() 
