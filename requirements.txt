@@ -1,0 +1,8 @@
+streamlit
+pandas
+numpy
+openai
+matplotlib
+seaborn
+fpdf
+PyPDF2
