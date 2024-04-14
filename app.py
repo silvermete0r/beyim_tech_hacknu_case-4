@@ -121,7 +121,7 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("Insight")
+st.title("Beyim Insight")
 
 st.markdown("#### AI-powered service for testprep progress analysis")
 
@@ -170,7 +170,7 @@ if student_name:
                             fig, ax = plt.subplots(figsize=(12,4))
                             ax.axis('tight')
                             ax.axis('off')
-                            the_table = ax.table(cellText=df.values,colLabels=df.columns,loc='center')
+                            the_table = ax.table(cellText=df.values, colLabels=df.columns, loc='center')
                             with PdfPages("temp/table1.pdf") as pp:
                                 pp.savefig(fig, bbox_inches='tight')
                             plt.close()
@@ -188,10 +188,10 @@ if student_name:
                         with st.spinner("🤖 Loading..."):
                             st.dataframe(df)
                             fig, ax = plt.subplots(figsize=(12,4))
+                            ax.set_title('Dataframe')
                             ax.axis('tight')
                             ax.axis('off')
                             the_table = ax.table(cellText=df.values,colLabels=df.columns,loc='center')
-                            the_table.set_title('Input Data')
                             with PdfPages("temp/table1.pdf") as pp:
                                 pp.savefig(fig, bbox_inches='tight')
                             plt.close()
@@ -200,10 +200,10 @@ if student_name:
                             df_copy = df.describe().T.drop(columns=["count", "std", "25%", "50%", "75%"])
                             st.write(df_copy)
                             fig, ax = plt.subplots(figsize=(12,4))
+                            ax.set_title('Descriptive Statistics')
                             ax.axis('tight')
                             ax.axis('off')
                             the_table = ax.table(cellText=df_copy.values, colLabels=df_copy.columns, loc='center')
-                            the_table.set_title('Statistics')
                             with PdfPages("temp/table2.pdf") as pp:
                                 pp.savefig(fig, bbox_inches='tight')
                             plt.close()
