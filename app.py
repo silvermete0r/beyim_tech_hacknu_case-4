@@ -13,7 +13,7 @@ from PyPDF2 import PdfMerger
 import base64
 
 client = OpenAI(
-    api_key=st.secrets["OPENAI_API"],
+    api_key=st.secrets["OPENAI_API"]
 )
 
 if "openai_model" not in st.session_state:
@@ -128,13 +128,6 @@ if student_name:
                     with colA:
                         with st.spinner("🤖 Loading..."):
                             st.dataframe(df)
-                            fig, ax = plt.subplots(figsize=(12,4))
-                            ax.axis('tight')
-                            ax.axis('off')
-                            the_table = ax.table(cellText=df.values, colLabels=df.columns, loc='center')
-                            with PdfPages("temp/table1.pdf") as pp:
-                                pp.savefig(fig, bbox_inches='tight')
-                            plt.close()
                     with colB:
                         with st.spinner("🤖 Plotting..."):
                             st.scatter_chart(data=df_copy.iloc[:, 1:])
@@ -148,14 +141,6 @@ if student_name:
                     with colA:
                         with st.spinner("🤖 Loading..."):
                             st.dataframe(df)
-                            fig, ax = plt.subplots(figsize=(12,4))
-                            ax.set_title('Dataframe')
-                            ax.axis('tight')
-                            ax.axis('off')
-                            the_table = ax.table(cellText=df.values,colLabels=df.columns,loc='center')
-                            with PdfPages("temp/table1.pdf") as pp:
-                                pp.savefig(fig, bbox_inches='tight')
-                            plt.close()
                     with colB:
                         with st.spinner("🤖 Calculating..."):
                             df_copy = df.describe().T.drop(columns=["count", "std", "25%", "50%", "75%"])

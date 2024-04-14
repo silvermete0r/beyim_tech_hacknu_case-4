@@ -33,7 +33,6 @@ def linear_regression(df):
         pred_df = pd.DataFrame(dct, index=np.arange(len(df) + 1, len(df) + 6)) 
         pred_dfs.append(pred_df) 
     combined_df = pd.concat(pred_dfs, axis=1) 
-    st.write(combined_df) 
     plt.title('Forecasting Test Scores')
     plt.xlabel('Test ID') 
     plt.ylabel('Test Score') 
@@ -41,4 +40,13 @@ def linear_regression(df):
     with PdfPages("temp/plot3.pdf") as pdf:
         pdf.savefig()
     st.pyplot(plt)
+    plt.close()
+    st.write(combined_df) 
+    fig, ax = plt.subplots(figsize=(12,4))
+    ax.set_title('Forecasting Test Scores')
+    ax.axis('tight')
+    ax.axis('off')
+    the_table = ax.table(cellText=combined_df.values, colLabels=combined_df.columns, loc='center')
+    with PdfPages("temp/table1.pdf") as pp:
+        pp.savefig(fig, bbox_inches='tight')
     plt.close()
