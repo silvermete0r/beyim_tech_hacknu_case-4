@@ -4,5 +4,6 @@ numpy
 openai
 matplotlib
 seaborn
-fpdf
+scikit-learn
+fpdf2
 PyPDF2
