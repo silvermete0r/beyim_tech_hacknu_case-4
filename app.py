@@ -272,6 +272,8 @@ if student_name:
                                 f'<a href="data:application/pdf;base64,{base64.b64encode(file_content).decode()}" download="analysis_report.pdf">Download Analysis Report</a>',
                                 unsafe_allow_html=True
                             )
+
+                            st.session_state.robot = False
                                               
                         except Exception as e:
                             st.error(f"An error occurred: {str(e)}")
