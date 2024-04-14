@@ -109,6 +109,7 @@ def draw_analysis_lineplot(df):
     for i, column in enumerate(df.columns[1:]):
         linestyle = linestyles[i % len(linestyles)]
         sns.lineplot(data=df, x=id, y=column, label=column, marker='o', linestyle=linestyle, markersize=5)
+    plt.title('Graphs')
     plt.legend()
     plt.xlabel('Test ID')
     plt.ylabel('Test Score')
@@ -120,9 +121,9 @@ st.set_page_config(
     layout="wide"
 )
 
-st.title("🎓 Beyim AI")
+st.title("Insight")
 
-st.markdown("#### Welcome to Beyim AI, a platfom that helps you to analyze your academic performance!")
+st.markdown("#### AI-powered service for testprep progress analysis")
 
 exam_type = st.selectbox("Select an exam", ["", "UNT", "NUET", "IELTS", "MESC", "TOEFL", "NUET", "SAT", "OTHER"], index=0)
 
@@ -190,6 +191,7 @@ if student_name:
                             ax.axis('tight')
                             ax.axis('off')
                             the_table = ax.table(cellText=df.values,colLabels=df.columns,loc='center')
+                            the_table.set_title('Input Data')
                             with PdfPages("temp/table1.pdf") as pp:
                                 pp.savefig(fig, bbox_inches='tight')
                             plt.close()
@@ -201,6 +203,7 @@ if student_name:
                             ax.axis('tight')
                             ax.axis('off')
                             the_table = ax.table(cellText=df_copy.values, colLabels=df_copy.columns, loc='center')
+                            the_table.set_title('Statistics')
                             with PdfPages("temp/table2.pdf") as pp:
                                 pp.savefig(fig, bbox_inches='tight')
                             plt.close()
@@ -233,10 +236,10 @@ if student_name:
                                 plt.close()
                             else:
                                 st.snow()
-                    
+                    st.subheader('Forecast')
                     with st.spinner("🤖 Forecasting..."):
                         linear_regression(df)
-            
+                    st.subheader('Analysis')
                     with st.spinner("🤖 Analyzing..."):
                         try:
                             response = generate_gpt4_response(generate_prompt(df, exam_type, student_name), exam_type, st.secrets["OPENAI_API"])
@@ -280,7 +283,7 @@ if student_name:
                             st.stop()
 
 # Accept user input
-if prompt := st.chat_input("🤖 The bot is offline. Submit your file to turn him up!" if st.session_state.robot else "🤖 The bot is on. You can ask him questions!", disabled=st.session_state.robot):
+if prompt := st.chat_input("🤖 The bot is offline. Analyze to turn him on!" if st.session_state.robot else "🤖 The bot is on. You can ask him questions about your progress!", disabled=st.session_state.robot):
     
     st.session_state.messages.append({"role": "user", "content": prompt})
     
