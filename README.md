@@ -1,7 +1,7 @@
 # Beyim Insight
 *Beyim Insight is an AI system for generating detailed reports on student's test / mock exams including: feedback, recommendations, visualisations and predictions.*
 
-**🖥️ Hackathon:** <HackNU 2024/> Winners 🏆
+**🖥️ Hackathon:** <HackNU 2024/> Winners 🏆 ~ [Linkedin Post](https://www.linkedin.com/posts/arman-zhalgasbayev_hacknu2024-nuacm-hackathon-activity-7186076287206125571-pGdX?utm_source=share&utm_medium=member_desktop)
 
 **👨‍👩‍👧‍👦 Team:** Dataflow ([Arman](https://github.com/silvermete0r), [Tolegen](https://github.com/tolegengca), [Alimzhan](https://github.com/gumran))
 
@@ -12,7 +12,6 @@
 **💼 Case:** BeiymTech ~ AI + Education
 
 **📝 Task:** Create a SMART reports website that should generate SMART reports for teachers, students, parents.
-
 
 **💡 Our Solution:** [beyim-insight.kz](https://beyim-insight.streamlit.app/)
 
